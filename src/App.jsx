@@ -37,7 +37,7 @@ const content = [
     title: "GROW YOUR",
     highlight: "STRENGTH",
     description: "Push your limits and redefine what's possible. Join our premium fitness community and build your dream physique.",
-    bg: "bg-[#FF1A1A]",
+    bg: "bg-[#fe7300]",
     btnText: "Ask For Price",
   },
   {
@@ -45,7 +45,7 @@ const content = [
     title: "TRANSFORM",
     highlight: "YOUR BODY",
     description: "Experience state-of-the-art equipment and expert guidance tailored to your personal goals.",
-    bg: "bg-[#FF1A1A]",
+    bg: "bg-[#fe7300]",
     btnText: "Start Training",
   },
   {
@@ -53,7 +53,7 @@ const content = [
     title: "MAXIMIZE",
     highlight: "YOUR ENERGY",
     description: "Train like a champion with our specialized high-intensity programs. Unstoppable energy starts here.",
-    bg: "bg-[#FF1A1A]",
+    bg: "bg-[#fe7300]",
     btnText: "Join Now",
   }
 ];
@@ -100,7 +100,7 @@ function GalleryTextBlock({ item }) {
         >
           {item.num}
         </span>
-        <span className="text-[#FF4F01] font-black text-[11px] tracking-widest uppercase mt-4">
+        <span className="text-[#fe7300] font-black text-[11px] tracking-widest uppercase mt-4">
           {item.cat}
         </span>
       </div>
@@ -148,6 +148,7 @@ export default function App() {
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [logoIndex, setLogoIndex] = useState(0);
   const [activeSection, setActiveSection] = useState('home');
+  const [activeTrainer, setActiveTrainer] = useState(null);
 
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
@@ -242,12 +243,9 @@ export default function App() {
         </div>
 
         {/* Navigation */}
-        <nav className="w-full py-4 px-10 flex items-center justify-between text-zinc-950">
-          <div className="flex items-center gap-2 cursor-pointer group" onClick={() => scrollToSection('home')}>
-            <div className="w-8 h-8 bg-[#FF1A1A] rounded-sm flex items-center justify-center transition-transform group-hover:rotate-12">
-              <div className="w-3 h-3 bg-white" />
-            </div>
-            <span className="text-2xl font-black tracking-tighter uppercase">CORE<span className="text-zinc-400 font-normal"> FITNESS</span></span>
+        <nav className="w-full py-2 px-10 flex items-center justify-between text-zinc-950 h-16 overflow-visible">
+          <div className="flex items-center cursor-pointer group" onClick={() => scrollToSection('home')}>
+            <img src="/corefitness-removebg-preview.png" alt="Core Fitness" className="h-40 w-auto object-contain transition-transform group-hover:scale-105 -my-10 relative z-10" />
           </div>
 
           <div className="hidden md:flex items-center gap-10 text-[13px] font-extrabold tracking-tight">
@@ -260,7 +258,7 @@ export default function App() {
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className={`hover:text-[#FF1A1A] transition-colors uppercase bg-transparent border-none cursor-pointer font-extrabold text-[13px] tracking-tight ${activeSection === id ? 'text-[#FF1A1A]' : ''
+                className={`hover:text-[#fe7300] transition-colors uppercase bg-transparent border-none cursor-pointer font-extrabold text-[13px] tracking-tight ${activeSection === id ? 'text-[#fe7300]' : ''
                   }`}
               >
                 {label}
@@ -276,7 +274,7 @@ export default function App() {
               <div className="absolute right-0 inset-y-0 w-[2.5px] bg-zinc-950 z-20" />
 
               {/* Slow Orange Fill Animation */}
-              <div className="absolute inset-0 bg-[#FF4F01] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out z-0" />
+              <div className="absolute inset-0 bg-[#fe7300] translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out z-0" />
 
               {/* Button Text */}
               <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
@@ -307,7 +305,7 @@ export default function App() {
                 className="flex flex-col gap-0"
               >
                 <motion.div variants={itemVariants}>
-                  <span className="font-black tracking-widest text-[#FF1A1A] text-lg uppercase">
+                  <span className="font-black tracking-widest text-[#fe7300] text-lg uppercase">
                     {current.tag}
                   </span>
                 </motion.div>
@@ -325,7 +323,7 @@ export default function App() {
                 </motion.p>
 
                 <motion.div variants={itemVariants} className="mt-10">
-                  <button className="px-10 py-5 bg-[#FF1A1A] text-white font-black uppercase tracking-widest text-[12px] hover:scale-105 transition-all shadow-xl shadow-red-500/20">
+                  <button className="px-10 py-5 bg-[#fe7300] text-white font-black uppercase tracking-widest text-[12px] hover:scale-105 transition-all shadow-xl shadow-[#fe7300]/20">
                     {current.btnText}
                   </button>
                 </motion.div>
@@ -402,7 +400,7 @@ export default function App() {
             <button
               key={i}
               onClick={() => setIndex(i)}
-              className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? 'w-10 bg-[#FF1A1A]' : 'w-4 bg-zinc-200'}`}
+              className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? 'w-10 bg-[#fe7300]' : 'w-4 bg-zinc-200'}`}
             />
           ))}
         </div>
@@ -418,7 +416,7 @@ export default function App() {
             <div className="relative mb-[30px] flex justify-center lg:justify-center group">
 
               {/* Decorative Frame */}
-              <div className="absolute -left-4 -top-4 w-full h-full border-[15px] border-[#FF4F01] z-0 ml-10 mt-10" />
+              <div className="absolute -left-4 -top-4 w-full h-full border-[15px] border-[#fe7300] z-0 ml-10 mt-10" />
 
               <div className="relative z-10 bg-zinc-100 w-[90%]">
                 <img src={introPic} alt="Gym Hero" className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700 relative z-10" />
@@ -437,8 +435,8 @@ export default function App() {
                 {/* Section Head */}
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-[2px] bg-[#FF4F01]" />
-                    <span className="text-[#FF4F01] text-sm font-black tracking-widest uppercase">About US</span>
+                    <div className="w-6 h-[2px] bg-[#fe7300]" />
+                    <span className="text-[#fe7300] text-sm font-black tracking-widest uppercase">About US</span>
                   </div>
                   <h2 className="text-4xl lg:text-[55px] font-black text-zinc-950 leading-tight uppercase tracking-tighter">
                     Give A Shape of Your Body
@@ -456,40 +454,40 @@ export default function App() {
 
                   {/* Feature 1 */}
                   <div className="flex items-center gap-6 group cursor-default">
-                    <div className="w-[70px] h-[70px] bg-zinc-200 flex items-center justify-center text-zinc-900 group-hover:bg-[#FF4F01] group-hover:text-white transition-all duration-300">
+                    <div className="w-[70px] h-[70px] bg-zinc-200 flex items-center justify-center text-zinc-900 group-hover:bg-[#fe7300] group-hover:text-white transition-all duration-300">
                       <i className="fa-solid fa-dumbbell text-3xl"></i>
                     </div>
                     <div className="flex flex-col">
-                      <h5 className="text-zinc-950 font-black uppercase text-lg group-hover:text-[#FF4F01] transition-colors">Full-Body Strength</h5>
+                      <h5 className="text-zinc-950 font-black uppercase text-lg group-hover:text-[#fe7300] transition-colors">Full-Body Strength</h5>
                       <p className="text-zinc-500 text-sm mt-1">Train with the best experts in bodybuilding field.</p>
                     </div>
                   </div>
 
                   {/* Feature 2 */}
                   <div className="flex items-center gap-6 group cursor-default">
-                    <div className="w-[70px] h-[70px] bg-zinc-200 flex items-center justify-center text-zinc-900 group-hover:bg-[#FF4F01] group-hover:text-white transition-all duration-300">
+                    <div className="w-[70px] h-[70px] bg-zinc-200 flex items-center justify-center text-zinc-900 group-hover:bg-[#fe7300] group-hover:text-white transition-all duration-300">
                       <i className="fa-solid fa-bicycle text-3xl"></i>
                     </div>
                     <div className="flex flex-col">
-                      <h5 className="text-zinc-950 font-black uppercase text-lg group-hover:text-[#FF4F01] transition-colors">Lean Machines</h5>
+                      <h5 className="text-zinc-950 font-black uppercase text-lg group-hover:text-[#fe7300] transition-colors">Lean Machines</h5>
                       <p className="text-zinc-500 text-sm mt-1">Our personal trainers will help you find a perfect workout.</p>
                     </div>
                   </div>
 
                   {/* Feature 3 */}
                   <div className="flex items-center gap-6 group cursor-default">
-                    <div className="w-[70px] h-[70px] bg-zinc-200 flex items-center justify-center text-zinc-900 group-hover:bg-[#FF4F01] group-hover:text-white transition-all duration-300">
+                    <div className="w-[70px] h-[70px] bg-zinc-200 flex items-center justify-center text-zinc-900 group-hover:bg-[#fe7300] group-hover:text-white transition-all duration-300">
                       <i className="fa-solid fa-wand-magic-sparkles text-3xl"></i>
                     </div>
                     <div className="flex flex-col">
-                      <h5 className="text-zinc-950 font-black uppercase text-lg group-hover:text-[#FF4F01] transition-colors">Power Yoga</h5>
+                      <h5 className="text-zinc-950 font-black uppercase text-lg group-hover:text-[#fe7300] transition-colors">Power Yoga</h5>
                       <p className="text-zinc-500 text-sm mt-1">Uniquely sequenced class work to heat and challenge the body </p>
                     </div>
                   </div>
 
                 </div>
 
-                <a href="#" className="mt-6 px-10 py-4 bg-[#FF4F01] text-white font-black uppercase tracking-widest text-[12px] self-start inline-block hover:bg-zinc-900 transition-all shadow-xl shadow-[#FF4F01]/20">
+                <a href="#" className="mt-6 px-10 py-4 bg-[#fe7300] text-white font-black uppercase tracking-widest text-[12px] self-start inline-block hover:bg-zinc-900 transition-all shadow-xl shadow-[#fe7300]/20">
                   Learn More
                 </a>
               </div>
@@ -513,11 +511,11 @@ export default function App() {
               className="flex flex-col gap-4"
             >
               <div className="flex items-center gap-2">
-                <div className="w-6 h-[2px] bg-[#FF4F01]" />
-                <span className="text-[#FF4F01] text-sm font-black tracking-widest uppercase">Some Facts</span>
+                <div className="w-6 h-[2px] bg-[#fe7300]" />
+                <span className="text-[#fe7300] text-sm font-black tracking-widest uppercase">Some Facts</span>
               </div>
               <h2 className="text-4xl lg:text-[50px] font-black text-zinc-950 leading-tight uppercase tracking-tighter">
-                We always provide best fitness service for <span className="text-[#FF4F01]">25 years</span>
+                We always provide best fitness service for <span className="text-[#fe7300]">25 years</span>
               </h2>
             </motion.div>
 
@@ -541,7 +539,7 @@ export default function App() {
                     <i className={`${stat.icon} text-3xl`}></i>
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[40px] font-black text-[#FF4F01] leading-none mb-1">
+                    <span className="text-[40px] font-black text-[#fe7300] leading-none mb-1">
                       <Counter from={0} to={stat.num} duration={2.5} />
                     </span>
                     <span className="text-zinc-950 font-bold text-sm">{stat.text}</span>
@@ -570,9 +568,9 @@ export default function App() {
           {/* Section Header */}
           <div className="flex flex-col items-center text-center gap-4 mb-20 animate-fade-in-up">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-[2px] bg-[#FF4F01]" />
-              <span className="text-[#FF4F01] text-sm font-black tracking-widest uppercase">Our Trainer</span>
-              <div className="w-8 h-[2px] bg-[#FF4F01]" />
+              <div className="w-8 h-[2px] bg-[#fe7300]" />
+              <span className="text-[#fe7300] text-sm font-black tracking-widest uppercase">Our Trainer</span>
+              <div className="w-8 h-[2px] bg-[#fe7300]" />
             </div>
             <h2 className="text-4xl lg:text-[55px] font-black text-zinc-950 leading-tight uppercase tracking-tighter max-w-3xl">
               Team of Expert <br /> Coaches
@@ -593,17 +591,18 @@ export default function App() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: i * 0.2 }}
                 className="relative group overflow-hidden bg-zinc-100 cursor-pointer shadow-xl"
+                onClick={() => setActiveTrainer(activeTrainer === i ? null : i)}
               >
 
                 {/* Trainer Image */}
                 <img
                   src={trainer.img}
                   alt={trainer.name}
-                  className="w-full h-auto aspect-[3/4] object-cover scale-[1.05] group-hover:translate-y-5 transition-transform duration-[1000ms] ease-out origin-top"
+                  className={`w-full h-auto aspect-[3/4] object-cover scale-[1.05] group-hover:translate-y-5 transition-transform duration-[1000ms] ease-out origin-top ${activeTrainer === i ? 'translate-y-5' : ''}`}
                 />
 
                 {/* Top Hover Banner (Orange) */}
-                <div className="absolute top-0 left-0 w-full bg-[#FF4F01] py-5 px-8 -translate-y-full group-hover:translate-y-0 transition-transform duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col justify-center">
+                <div className={`absolute top-0 left-0 w-full bg-[#fe7300] py-5 px-8 transition-transform duration-[400ms] ease-[cubic-bezier(0.25,1,0.5,1)] flex flex-col justify-center ${activeTrainer === i ? 'translate-y-0' : '-translate-y-full'} group-hover:translate-y-0`}>
                   <span className="text-zinc-950 font-black text-[11px] tracking-[0.2em] uppercase mb-1">Bodybuilding Coach</span>
                   <h4 className="text-white font-black text-3xl uppercase leading-none tracking-tight">
                     {trainer.name}
@@ -611,8 +610,8 @@ export default function App() {
                 </div>
 
                 {/* Bottom Hover Banner (Socials) */}
-                <div className="absolute bottom-5 left-0 w-[80%] bg-[#111111]/95 py-4 px-6 flex items-center justify-start gap-6 -translate-x-full group-hover:translate-x-0 transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden">
-                  <div className="absolute right-0 top-0 w-1 h-full bg-[#FF4F01]" />
+                <div className={`absolute bottom-5 left-0 w-[80%] bg-[#111111]/95 py-4 px-6 flex items-center justify-start gap-6 transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden ${activeTrainer === i ? 'translate-x-0' : '-translate-x-full'} group-hover:translate-x-0`}>
+                  <div className="absolute right-0 top-0 w-1 h-full bg-[#fe7300]" />
                   <a href="#" className="text-zinc-400 hover:text-white transition-colors ml-2">
                     <i className="fa-brands fa-facebook-f text-lg"></i>
                   </a>
@@ -642,9 +641,9 @@ export default function App() {
           <div className="flex flex-col md:flex-row items-center md:items-end justify-center md:justify-between gap-6 text-center md:text-left">
             <div className="flex flex-col gap-3 items-center md:items-start">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-[2px] bg-[#FF4F01]" />
-                <span className="text-[#FF4F01] text-sm font-black tracking-widest uppercase">Find Your Exercise</span>
-                <div className="w-8 h-[2px] bg-[#FF4F01] md:hidden" />
+                <div className="w-8 h-[2px] bg-[#fe7300]" />
+                <span className="text-[#fe7300] text-sm font-black tracking-widest uppercase">Find Your Exercise</span>
+                <div className="w-8 h-[2px] bg-[#fe7300] md:hidden" />
               </div>
               <h2 className="text-4xl lg:text-[50px] font-black text-white leading-tight uppercase tracking-tighter">
                 New Exclusive <br className="hidden md:block" /> Workouts
@@ -654,13 +653,13 @@ export default function App() {
             <div className="flex gap-2 relative z-20">
               <button
                 onClick={handleGalleryPrev}
-                className="w-12 h-12 bg-[#FF4F01] hover:bg-white hover:text-black transition-colors flex items-center justify-center text-white"
+                className="w-12 h-12 bg-[#fe7300] hover:bg-white hover:text-black transition-colors flex items-center justify-center text-white"
               >
                 <i className="fa-solid fa-chevron-left text-lg"></i>
               </button>
               <button
                 onClick={handleGalleryNext}
-                className="w-12 h-12 bg-[#FF4F01] hover:bg-white hover:text-black transition-colors flex items-center justify-center text-white"
+                className="w-12 h-12 bg-[#fe7300] hover:bg-white hover:text-black transition-colors flex items-center justify-center text-white"
               >
                 <i className="fa-solid fa-chevron-right text-lg"></i>
               </button>
@@ -702,7 +701,7 @@ export default function App() {
       {/* Workout Promo Section */}
 
       {/* Mobile Layout (below lg) */}
-      <section className="lg:hidden bg-[#FF4F01] overflow-hidden">
+      <section className="lg:hidden bg-[#fe7300] overflow-hidden">
         <div className="px-6 pt-12 pb-0">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -739,7 +738,7 @@ export default function App() {
         {/* 3-column layout: white | orange (narrow) | white */}
         <div className="absolute inset-0 flex z-0">
           <div className="w-[36%] bg-white" />
-          <div className="w-[28%] bg-[#FF4F01]" />
+          <div className="w-[28%] bg-[#fe7300]" />
           <div className="w-[36%] bg-white" />
         </div>
 
@@ -763,7 +762,7 @@ export default function App() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="mt-8 px-8 py-4 bg-[#FF4F01] text-white font-black uppercase tracking-widest text-sm hover:bg-zinc-950 transition-colors duration-300"
+              className="mt-8 px-8 py-4 bg-[#fe7300] text-white font-black uppercase tracking-widest text-sm hover:bg-zinc-950 transition-colors duration-300"
             >
               Get Started
             </motion.button>
@@ -804,9 +803,9 @@ export default function App() {
               onClick={() => setShowVideo(true)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-[0_0_0_12px_rgba(255,255,255,0.2)] hover:bg-[#FF4F01] hover:shadow-[0_0_0_12px_rgba(255,79,1,0.25)] transition-all duration-400 group"
+              className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-[0_0_0_12px_rgba(255,255,255,0.2)] hover:bg-[#fe7300] hover:shadow-[0_0_0_12px_rgba(254,115,0,0.25)] transition-all duration-400 group"
             >
-              <i className="fa-solid fa-play text-[#FF4F01] text-2xl group-hover:text-white ml-1 transition-colors"></i>
+              <i className="fa-solid fa-play text-[#fe7300] text-2xl group-hover:text-white ml-1 transition-colors"></i>
             </motion.button>
           </div>
         </div>
@@ -821,8 +820,8 @@ export default function App() {
             className="max-w-lg"
           >
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-[2px] bg-[#FF4F01]" />
-              <span className="text-[#FF4F01] text-xs font-black tracking-[0.25em] uppercase">We Provide</span>
+              <div className="w-8 h-[2px] bg-[#fe7300]" />
+              <span className="text-[#fe7300] text-xs font-black tracking-[0.25em] uppercase">We Provide</span>
             </div>
             <h2 className="text-[42px] lg:text-[52px] font-black text-white uppercase leading-[1.1] tracking-tight mb-5">
               World Class <br /> Facilities
@@ -833,7 +832,7 @@ export default function App() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="px-8 py-4 bg-[#FF4F01] text-white font-black uppercase tracking-widest text-sm hover:bg-white hover:text-zinc-950 transition-colors duration-300"
+              className="px-8 py-4 bg-[#fe7300] text-white font-black uppercase tracking-widest text-sm hover:bg-white hover:text-zinc-950 transition-colors duration-300"
             >
               Learn More
             </motion.button>
@@ -862,7 +861,7 @@ export default function App() {
             >
               <button
                 onClick={() => setShowVideo(false)}
-                className="absolute -top-10 right-0 text-white text-sm font-bold hover:text-[#FF4F01] transition-colors flex items-center gap-2"
+                className="absolute -top-10 right-0 text-white text-sm font-bold hover:text-[#fe7300] transition-colors flex items-center gap-2"
               >
                 <i className="fa-solid fa-xmark text-xl"></i> Close
               </button>
@@ -885,9 +884,9 @@ export default function App() {
           {/* Header */}
           <div className="flex flex-col items-center text-center gap-4 mb-14">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-[2px] bg-[#FF4F01]" />
-              <span className="text-[#FF4F01] text-sm font-black tracking-widest uppercase">Our Timetable</span>
-              <div className="w-8 h-[2px] bg-[#FF4F01]" />
+              <div className="w-8 h-[2px] bg-[#fe7300]" />
+              <span className="text-[#fe7300] text-sm font-black tracking-widest uppercase">Our Timetable</span>
+              <div className="w-8 h-[2px] bg-[#fe7300]" />
             </div>
             <h2 className="text-4xl lg:text-[55px] font-black text-zinc-950 leading-tight uppercase tracking-tighter">
               Working Hours &amp; <br /> Classes
@@ -903,7 +902,7 @@ export default function App() {
                 <tr>
                   <th className="bg-zinc-950 text-white font-black uppercase text-sm tracking-widest px-4 py-4 text-center w-[120px]">Routine</th>
                   {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map(day => (
-                    <th key={day} className="bg-[#FF4F01] text-white font-black uppercase text-sm tracking-wider px-4 py-4 text-center">{day}</th>
+                    <th key={day} className="bg-[#fe7300] text-white font-black uppercase text-sm tracking-wider px-4 py-4 text-center">{day}</th>
                   ))}
                 </tr>
               </thead>
@@ -987,14 +986,14 @@ export default function App() {
                   <tr key={ri} className="border-b border-zinc-800">
                     {/* Time Cell */}
                     <td className="bg-zinc-950 px-4 py-5 text-center">
-                      <span className="text-[#FF4F01] font-black text-[38px] leading-none">{row.time}</span>
+                      <span className="text-[#fe7300] font-black text-[38px] leading-none">{row.time}</span>
                       <span className="text-zinc-400 font-bold text-sm ml-1">{row.period}</span>
                     </td>
                     {/* Class Cells */}
                     {row.cells.map((cell, ci) => (
                       <td
                         key={ci}
-                        className={`px-3 py-5 text-center align-middle border border-zinc-800 transition-colors duration-300 cursor-pointer group ${cell.name ? 'bg-zinc-950 hover:bg-[#FF4F01]' : 'bg-zinc-900'}`}
+                        className={`px-3 py-5 text-center align-middle border border-zinc-800 transition-colors duration-300 cursor-pointer group ${cell.name ? 'bg-zinc-950 hover:bg-[#fe7300]' : 'bg-zinc-900'}`}
                       >
                         {cell.name && (
                           <div className="flex flex-col items-center gap-1">
@@ -1019,9 +1018,9 @@ export default function App() {
           {/* Section Header */}
           <div className="flex flex-col items-center text-center gap-4 mb-12">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-[2px] bg-[#FF4F01]" />
-              <span className="text-[#FF4F01] text-sm font-black tracking-widest uppercase">Google Reviews</span>
-              <div className="w-8 h-[2px] bg-[#FF4F01]" />
+              <div className="w-8 h-[2px] bg-[#fe7300]" />
+              <span className="text-[#fe7300] text-sm font-black tracking-widest uppercase">Google Reviews</span>
+              <div className="w-8 h-[2px] bg-[#fe7300]" />
             </div>
             <h2 className="text-4xl lg:text-[55px] font-black text-white leading-tight uppercase tracking-tighter">
               What Our Clients Say
@@ -1041,9 +1040,9 @@ export default function App() {
           {/* Section Header */}
           <div className="flex flex-col items-center text-center gap-4 mb-16">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-[2px] bg-[#FF4F01]" />
-              <span className="text-[#FF4F01] text-sm font-black tracking-widest uppercase">Get In Touch</span>
-              <div className="w-8 h-[2px] bg-[#FF4F01]" />
+              <div className="w-8 h-[2px] bg-[#fe7300]" />
+              <span className="text-[#fe7300] text-sm font-black tracking-widest uppercase">Get In Touch</span>
+              <div className="w-8 h-[2px] bg-[#fe7300]" />
             </div>
             <h2 className="text-4xl lg:text-[55px] font-black text-zinc-950 leading-tight uppercase tracking-tighter">
               Contact Us
@@ -1070,7 +1069,7 @@ export default function App() {
                     <input
                       type="text"
                       placeholder="John Doe"
-                      className="w-full border border-zinc-200 bg-zinc-50 py-3.5 px-4 text-sm rounded-lg focus:border-[#FF4F01] focus:bg-white outline-none transition-all duration-300"
+                      className="w-full border border-zinc-200 bg-zinc-50 py-3.5 px-4 text-sm rounded-lg focus:border-[#fe7300] focus:bg-white outline-none transition-all duration-300"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
@@ -1078,7 +1077,7 @@ export default function App() {
                     <input
                       type="tel"
                       placeholder="+91 98765 43210"
-                      className="w-full border border-zinc-200 bg-zinc-50 py-3.5 px-4 text-sm rounded-lg focus:border-[#FF4F01] focus:bg-white outline-none transition-all duration-300"
+                      className="w-full border border-zinc-200 bg-zinc-50 py-3.5 px-4 text-sm rounded-lg focus:border-[#fe7300] focus:bg-white outline-none transition-all duration-300"
                     />
                   </div>
                 </div>
@@ -1088,13 +1087,13 @@ export default function App() {
                   <input
                     type="email"
                     placeholder="john@example.com"
-                    className="w-full border border-zinc-200 bg-zinc-50 py-3.5 px-4 text-sm rounded-lg focus:border-[#FF4F01] focus:bg-white outline-none transition-all duration-300"
+                    className="w-full border border-zinc-200 bg-zinc-50 py-3.5 px-4 text-sm rounded-lg focus:border-[#fe7300] focus:bg-white outline-none transition-all duration-300"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
                   <label className="text-zinc-950 font-bold text-xs uppercase tracking-widest">Select Plan</label>
-                  <select className="w-full border border-zinc-200 bg-zinc-50 py-3.5 px-4 text-sm rounded-lg focus:border-[#FF4F01] focus:bg-white outline-none transition-all duration-300 text-zinc-500">
+                  <select className="w-full border border-zinc-200 bg-zinc-50 py-3.5 px-4 text-sm rounded-lg focus:border-[#fe7300] focus:bg-white outline-none transition-all duration-300 text-zinc-500">
                     <option value="">Choose a plan...</option>
                     <option value="basic">Basic Plan</option>
                     <option value="standard">Standard Plan</option>
@@ -1108,7 +1107,7 @@ export default function App() {
                   <textarea
                     rows="4"
                     placeholder="Tell us about your fitness goals..."
-                    className="w-full border border-zinc-200 bg-zinc-50 py-3.5 px-4 text-sm rounded-lg focus:border-[#FF4F01] focus:bg-white outline-none transition-all duration-300 resize-none flex-1 min-h-[100px]"
+                    className="w-full border border-zinc-200 bg-zinc-50 py-3.5 px-4 text-sm rounded-lg focus:border-[#fe7300] focus:bg-white outline-none transition-all duration-300 resize-none flex-1 min-h-[100px]"
                   />
                 </div>
 
@@ -1116,7 +1115,7 @@ export default function App() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full py-4 bg-[#FF4F01] text-white font-black uppercase tracking-widest text-sm hover:bg-zinc-950 transition-colors duration-300 rounded-lg shadow-xl shadow-[#FF4F01]/20 mt-2"
+                  className="w-full py-4 bg-[#fe7300] text-white font-black uppercase tracking-widest text-sm hover:bg-zinc-950 transition-colors duration-300 rounded-lg shadow-xl shadow-[#fe7300]/20 mt-2"
                 >
                   Send Message
                 </motion.button>
@@ -1157,7 +1156,7 @@ export default function App() {
 
             {/* About Us */}
             <div className="flex flex-col gap-6">
-              <h4 className="text-[#FF4F01] font-black text-xl uppercase tracking-widest">About Us</h4>
+              <h4 className="text-[#fe7300] font-black text-xl uppercase tracking-widest">About Us</h4>
               <p className="text-white text-sm leading-relaxed max-w-xs">
                 Salem's premier fitness center located in Ram Complex, opp. Meyannur Roads. Expert coaching, certified trainers, and a welcoming community since day one.
               </p>
@@ -1172,7 +1171,7 @@ export default function App() {
                   <a
                     key={i}
                     href={social.link}
-                    className="w-10 h-10 border border-zinc-800 flex items-center justify-center text-sm hover:bg-[#FF4F01] hover:border-[#FF4F01] transition-all duration-300"
+                    className="w-10 h-10 border border-zinc-800 flex items-center justify-center text-sm hover:bg-[#fe7300] hover:border-[#fe7300] transition-all duration-300"
                   >
                     <i className={`fa-brands ${social.icon}`}></i>
                   </a>
@@ -1182,28 +1181,28 @@ export default function App() {
 
             {/* Get In Touch */}
             <div className="flex flex-col gap-6">
-              <h4 className="text-[#FF4F01] font-black text-xl uppercase tracking-widest">Get In Touch</h4>
+              <h4 className="text-[#fe7300] font-black text-xl uppercase tracking-widest">Get In Touch</h4>
               <ul className="flex flex-col gap-5">
                 <li className="flex items-start gap-4">
-                  <i className="fa-solid fa-location-dot text-[#FF4F01] mt-1 text-lg"></i>
+                  <i className="fa-solid fa-location-dot text-[#fe7300] mt-1 text-lg"></i>
                   <span className="text-white text-sm leading-relaxed">
                     Ramalingam Hospital, Ram Complex, <br /> No12, opp. Meyannur Roads, <br /> Salem, Tamil Nadu 636004
                   </span>
                 </li>
                 <li className="flex items-center gap-4">
-                  <i className="fa-solid fa-clock text-[#FF4F01] text-lg"></i>
+                  <i className="fa-solid fa-clock text-[#fe7300] text-lg"></i>
                   <span className="text-white text-sm">Mon - Sat : Open · Closes 9:30 PM</span>
                 </li>
                 <li className="flex items-center gap-4">
-                  <i className="fa-solid fa-phone text-[#FF4F01] text-lg"></i>
-                  <a href="tel:+919626233310" className="text-white text-sm hover:text-[#FF4F01] transition-colors">+91 96262 33310</a>
+                  <i className="fa-solid fa-phone text-[#fe7300] text-lg"></i>
+                  <a href="tel:+919626233310" className="text-white text-sm hover:text-[#fe7300] transition-colors">+91 96262 33310</a>
                 </li>
               </ul>
             </div>
 
             {/* Useful Links */}
             <div className="flex flex-col gap-6">
-              <h4 className="text-[#FF4F01] font-black text-xl uppercase tracking-widest">Useful Links</h4>
+              <h4 className="text-[#fe7300] font-black text-xl uppercase tracking-widest">Useful Links</h4>
               <ul className="flex flex-col gap-4">
                 {[
                   { label: 'About', id: 'about' },
@@ -1211,8 +1210,8 @@ export default function App() {
                   { label: 'Contact Us', id: 'contact' },
                 ].map(({ label, id }, i) => (
                   <li key={i}>
-                    <button onClick={() => scrollToSection(id)} className="text-white text-sm hover:text-[#FF4F01] flex items-center gap-2 group transition-colors bg-transparent border-none cursor-pointer">
-                      <i className="fa-solid fa-chevron-right text-[10px] text-zinc-700 group-hover:text-[#FF4F01] transition-colors"></i>
+                    <button onClick={() => scrollToSection(id)} className="text-white text-sm hover:text-[#fe7300] flex items-center gap-2 group transition-colors bg-transparent border-none cursor-pointer">
+                      <i className="fa-solid fa-chevron-right text-[10px] text-zinc-700 group-hover:text-[#fe7300] transition-colors"></i>
                       {label}
                     </button>
                   </li>
@@ -1222,7 +1221,7 @@ export default function App() {
 
             {/* Newsletter */}
             <div className="flex flex-col gap-6">
-              <h4 className="text-[#FF4F01] font-black text-xl uppercase tracking-widest">Newsletter</h4>
+              <h4 className="text-[#fe7300] font-black text-xl uppercase tracking-widest">Newsletter</h4>
               <p className="text-white text-sm leading-relaxed">
                 Our newsletters contain useful blog posts, case studies, "how to"s, and ways to help you grow your business.
               </p>
@@ -1230,9 +1229,9 @@ export default function App() {
                 <input
                   type="email"
                   placeholder="Enter Email Address"
-                  className="w-full bg-transparent border border-zinc-800 py-4 px-5 pr-12 text-sm focus:border-[#FF4F01] outline-none transition-colors"
+                  className="w-full bg-transparent border border-zinc-800 py-4 px-5 pr-12 text-sm focus:border-[#fe7300] outline-none transition-colors"
                 />
-                <button className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-[#FF4F01] transition-colors">
+                <button className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-[#fe7300] transition-colors">
                   <i className="fa-solid fa-paper-plane"></i>
                 </button>
               </div>
@@ -1243,15 +1242,7 @@ export default function App() {
           {/* Bottom Bar */}
           <div className="pt-8 border-t border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4">
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-[#FF4F01] flex items-center justify-center rounded-sm">
-                  <i className="fa-solid fa-dumbbell text-white text-xl"></i>
-                </div>
-                <div className="ml-2 flex flex-col leading-tight">
-                  <span className="text-white font-black text-2xl tracking-tighter uppercase">CORE</span>
-                  <span className="text-white font-bold text-[10px] tracking-[0.4em] uppercase -mt-1 opacity-80">FITNESS</span>
-                </div>
-              </div>
+              <img src="/corefitness-removebg-preview.png" alt="Core Fitness" className="h-44 w-auto object-contain brightness-0 invert" />
             </div>
 
             <p className="text-white/70 text-xs text-center md:text-left">
@@ -1259,11 +1250,11 @@ export default function App() {
             </p>
 
             <div className="flex items-center gap-4 text-white/70 text-xs">
-              <a href="#" className="hover:text-[#FF4F01] transition-colors">Terms & Condition</a>
+              <a href="#" className="hover:text-[#fe7300] transition-colors">Terms & Condition</a>
               <span className="opacity-30">/</span>
-              <a href="#" className="hover:text-[#FF4F01] transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-[#fe7300] transition-colors">Privacy Policy</a>
               <span className="opacity-30">/</span>
-              <a href="#" className="hover:text-[#FF4F01] transition-colors">Help</a>
+              <a href="#" className="hover:text-[#fe7300] transition-colors">Help</a>
             </div>
           </div>
 
