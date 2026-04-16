@@ -149,8 +149,22 @@ export default function App() {
   const [logoIndex, setLogoIndex] = useState(0);
   const [activeSection, setActiveSection] = useState('home');
   const [activeTrainer, setActiveTrainer] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
+
+  const handleTouchStart = (e) => { touchStartX.current = e.changedTouches[0].clientX; };
+  const handleTouchEnd = (e) => {
+    touchEndX.current = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) handleNext();
+      else handlePrev();
+    }
+  };
 
   const scrollToSection = (id) => {
+    setMobileMenuOpen(false);
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
@@ -283,14 +297,60 @@ export default function App() {
             </button>
           </div>
 
-          <button className="md:hidden">
-            <i className="fa-solid fa-bars text-xl"></i>
+          <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            <i className={`fa-solid ${mobileMenuOpen ? 'fa-xmark' : 'fa-bars'} text-xl`}></i>
           </button>
         </nav>
       </header>
 
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/40 z-[98] md:hidden"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="fixed top-[64px] left-0 right-0 z-[99] md:hidden bg-white border-b border-zinc-200 shadow-2xl"
+            >
+              <div className="flex flex-col items-center gap-6 py-8 px-6">
+                {[
+                  { label: 'Home', id: 'home' },
+                  { label: 'About', id: 'about' },
+                  { label: 'Classes', id: 'classes' },
+                  { label: 'Contact', id: 'contact' },
+                ].map(({ label, id }) => (
+                  <button
+                    key={id}
+                    onClick={() => scrollToSection(id)}
+                    className={`text-lg font-black uppercase tracking-widest bg-transparent border-none cursor-pointer transition-colors py-2 ${activeSection === id ? 'text-[#fe7300]' : 'text-zinc-900'}`}
+                  >
+                    {label}
+                  </button>
+                ))}
+                <button
+                  onClick={() => scrollToSection('contact-form')}
+                  className="mt-2 px-10 py-4 bg-[#fe7300] text-white font-black uppercase tracking-widest text-sm"
+                >
+                  GET IN TOUCH
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
       {/* Hero Section */}
-      <main id="home" className="flex-1 relative flex items-center min-h-screen pt-20 lg:pt-32 pb-12 overflow-hidden">
+      <main id="home" className="flex-1 relative flex items-center min-h-screen pt-20 lg:pt-32 pb-12 overflow-hidden" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
         <div className="container mx-auto px-6 lg:px-24 grid grid-cols-1 lg:grid-cols-2 items-center z-10 relative">
 
           {/* Left Content */}
@@ -375,24 +435,7 @@ export default function App() {
 
         </div>
 
-        {/* Navigation Arrows */}
-        <div className="absolute left-6 top-1/2 -translate-y-1/2 z-50 text-zinc-200 pointer-events-none opacity-50">
-          <i className="fa-solid fa-chevron-left text-4xl"></i>
-        </div>
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 z-50 text-zinc-200 pointer-events-none opacity-50">
-          <i className="fa-solid fa-chevron-right text-4xl"></i>
-        </div>
 
-        <button
-          onClick={handlePrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-16 h-full z-50 cursor-pointer"
-          aria-label="Previous"
-        />
-        <button
-          onClick={handleNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-16 h-full z-50 cursor-pointer"
-          aria-label="Next"
-        />
 
         {/* Pagination Indicators */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 z-50">
@@ -717,6 +760,7 @@ export default function App() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
+              onClick={() => scrollToSection('contact-form')}
               className="mt-6 px-8 py-4 bg-zinc-950 text-white font-black uppercase tracking-widest text-sm hover:bg-white hover:text-zinc-950 transition-colors duration-300"
             >
               Get Started
@@ -762,6 +806,7 @@ export default function App() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
+              onClick={() => scrollToSection('contact-form')}
               className="mt-8 px-8 py-4 bg-[#fe7300] text-white font-black uppercase tracking-widest text-sm hover:bg-zinc-950 transition-colors duration-300"
             >
               Get Started
