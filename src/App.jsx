@@ -268,7 +268,7 @@ export default function App() {
 
           <div className="hidden md:flex items-center">
             <div className="h-8 w-[1px] bg-zinc-200 mx-6 hidden lg:block" />
-            <button onClick={() => scrollToSection('contact')} className="relative px-9 py-3 bg-white font-black uppercase tracking-widest text-[12px] group overflow-hidden transition-colors border-y border-zinc-100">
+            <button onClick={() => scrollToSection('contact-form')} className="relative px-9 py-3 bg-white font-black uppercase tracking-widest text-[12px] group overflow-hidden transition-colors border-y border-zinc-100">
               {/* Vertical Side Bars */}
               <div className="absolute left-0 inset-y-0 w-[2.5px] bg-zinc-950 z-20" />
               <div className="absolute right-0 inset-y-0 w-[2.5px] bg-zinc-950 z-20" />
@@ -323,7 +323,7 @@ export default function App() {
                 </motion.p>
 
                 <motion.div variants={itemVariants} className="mt-10">
-                  <button className="px-10 py-5 bg-[#fe7300] text-white font-black uppercase tracking-widest text-[12px] hover:scale-105 transition-all shadow-xl shadow-[#fe7300]/20">
+                  <button onClick={() => scrollToSection('contact-form')} className="px-10 py-5 bg-[#fe7300] text-white font-black uppercase tracking-widest text-[12px] hover:scale-105 transition-all shadow-xl shadow-[#fe7300]/20">
                     {current.btnText}
                   </button>
                 </motion.div>
@@ -1034,7 +1034,7 @@ export default function App() {
 
 
       {/* Contact Form & Map Section */}
-      <section className="relative bg-zinc-50 py-24 overflow-hidden">
+      <section id="contact-form" className="relative bg-zinc-50 py-24 overflow-hidden">
         <div className="container mx-auto px-6 lg:px-24">
 
           {/* Section Header */}
